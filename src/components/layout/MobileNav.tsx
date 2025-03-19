@@ -1,0 +1,63 @@
+
+import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Home, Stethoscope, Users, BarChart3, UserCircle } from "lucide-react";
+
+const MobileNav = () => {
+  return (
+    <nav className="fixed bottom-0 inset-x-0 glassmorphism border-t border-gray-200 dark:border-gray-800 py-2 px-4 z-50">
+      <motion.div 
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.3 }}
+        className="flex justify-around items-center"
+      >
+        <NavItem to="/" icon={<Home />} label="Home" />
+        <NavItem to="/symptom-analyzer" icon={<Stethoscope />} label="Symptoms" />
+        <NavItem to="/doctor-consultation" icon={<Users />} label="Doctors" />
+        <NavItem to="/health-insights" icon={<BarChart3 />} label="Insights" />
+        <NavItem to="/profile" icon={<UserCircle />} label="Profile" />
+      </motion.div>
+    </nav>
+  );
+};
+
+interface NavItemProps {
+  to: string;
+  icon: React.ReactNode;
+  label: string;
+}
+
+const NavItem = ({ to, icon, label }: NavItemProps) => {
+  return (
+    <NavLink
+      to={to}
+      end={to === "/"}
+      className="relative px-3 py-2"
+    >
+      {({ isActive }) => (
+        <div className="flex flex-col items-center">
+          <span 
+            className={`h-6 w-6 mb-1 ${isActive ? 'text-health-600 dark:text-health-400' : 'text-gray-500 dark:text-gray-400'}`}
+          >
+            {icon}
+          </span>
+          <span 
+            className={`text-xs ${isActive ? 'font-medium text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'}`}
+          >
+            {label}
+          </span>
+          {isActive && (
+            <motion.div
+              layoutId="mobile-nav-indicator"
+              className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-health-500 rounded-full"
+              transition={{ duration: 0.5, type: "spring", bounce: 0.2 }}
+            />
+          )}
+        </div>
+      )}
+    </NavLink>
+  );
+};
+
+export default MobileNav;
