@@ -2,7 +2,7 @@
 import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { Home, ArrowLeft } from "lucide-react";
+import { Home, ArrowLeft, AlertCircle } from "lucide-react";
 
 const NotFound = () => {
   const location = useLocation();
@@ -20,17 +20,18 @@ const NotFound = () => {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
-        className="glass-card rounded-2xl p-8 max-w-lg w-full text-center"
+        className="glass-card rounded-2xl p-8 max-w-lg w-full text-center shadow-xl"
       >
-        <div className="mb-6 inline-flex items-center justify-center h-24 w-24 rounded-full bg-red-50 dark:bg-red-900/20">
-          <span className="text-6xl">404</span>
+        <div className="mb-6 inline-flex items-center justify-center h-24 w-24 rounded-full bg-red-50 dark:bg-red-900/20 shadow-inner">
+          <AlertCircle className="h-12 w-12 text-red-500" />
+          <span className="absolute text-2xl font-bold text-red-500">404</span>
         </div>
         <h1 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Page Not Found</h1>
         <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
           We couldn't find the page you're looking for. It might have been moved or doesn't exist.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link to="/" className="button-primary flex items-center justify-center gap-2">
+          <Link to="/" className="button-primary flex items-center justify-center gap-2 shadow-lg shadow-health-500/20">
             <Home className="h-4 w-4" /> Go to Home
           </Link>
           <button 

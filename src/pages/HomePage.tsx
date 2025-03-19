@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Bot, Calendar, Heart, UploadCloud, User2 } from "lucide-react";
+import { ArrowRight, Star, Calendar, Heart, UploadCloud, User2, CheckCircle, Trophy } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -53,12 +53,12 @@ const HomePage = () => {
       >
         <div className="inline-block mb-4">
           <motion.span 
-            className="inline-block px-4 py-2 rounded-full bg-health-50 text-health-700 text-sm font-medium dark:bg-health-900/30 dark:text-health-400"
+            className="inline-block px-4 py-2 rounded-full bg-health-50 text-health-700 text-sm font-medium dark:bg-health-900/30 dark:text-health-400 shadow-sm"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            Revolutionizing Healthcare with AI
+            <Star className="inline-block w-4 h-4 mr-1.5 mb-0.5" /> Revolutionizing Healthcare with AI
           </motion.span>
         </div>
         
@@ -90,7 +90,7 @@ const HomePage = () => {
         >
           <Link to="/symptom-analyzer">
             <motion.button 
-              className="button-primary flex items-center justify-center gap-2 w-full sm:w-auto"
+              className="button-primary flex items-center justify-center gap-2 w-full sm:w-auto shadow-lg shadow-health-500/20"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -118,7 +118,7 @@ const HomePage = () => {
       >
         <FeatureCard
           variants={item}
-          icon={<Bot className="h-6 w-6 text-health-600" />}
+          icon={<Star className="h-6 w-6 text-health-600" />}
           title="AI Symptom Analysis"
           description="Analyze your symptoms with our advanced AI for accurate health insights and recommendations."
           link="/symptom-analyzer"
@@ -155,6 +155,44 @@ const HomePage = () => {
           description="Track health metrics and receive personalized recommendations."
           link="/health-insights"
         />
+
+        <FeatureCard
+          variants={item}
+          icon={<CheckCircle className="h-6 w-6 text-health-600" />}
+          title="Personalized Care"
+          description="Get customized health plans tailored to your unique health profile."
+          link="/health-insights"
+        />
+      </motion.section>
+
+      {/* Testimonials Section */}
+      <motion.section
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.5 }}
+        className="mt-20 max-w-5xl mx-auto px-4"
+      >
+        <div className="text-center mb-10">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            Trusted by <span className="text-health-600">thousands</span> worldwide
+          </h2>
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            See what our users have to say about their experience with Arogya AI
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <TestimonialCard
+            quote="Arogya AI helped identify my condition quickly, saving me time and money on unnecessary doctor visits."
+            author="Sarah J."
+            role="User"
+          />
+          <TestimonialCard
+            quote="The symptom analyzer is incredibly accurate. It suggested exactly what my doctor later diagnosed!"
+            author="Michael T."
+            role="Regular User"
+          />
+        </div>
       </motion.section>
     </div>
   );
@@ -165,9 +203,9 @@ const FeatureCard = ({ icon, title, description, link, variants }: any) => {
     <motion.div
       variants={variants}
       className="glass-card-hover rounded-2xl p-6 hover-lift flex flex-col h-full"
-      whileHover={{ scale: 1.02 }}
+      whileHover={{ scale: 1.02, y: -5 }}
     >
-      <div className="bg-health-50 dark:bg-health-900/30 p-3 rounded-xl w-fit mb-4">
+      <div className="bg-health-50 dark:bg-health-900/30 p-3 rounded-xl w-fit mb-4 shadow-sm">
         {icon}
       </div>
       <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">{title}</h3>
@@ -178,6 +216,28 @@ const FeatureCard = ({ icon, title, description, link, variants }: any) => {
       >
         Learn more <ArrowRight className="h-3 w-3" />
       </Link>
+    </motion.div>
+  );
+};
+
+const TestimonialCard = ({ quote, author, role }: { quote: string, author: string, role: string }) => {
+  return (
+    <motion.div 
+      className="glass-card rounded-xl p-6 shadow-md"
+      whileHover={{ y: -5 }}
+      transition={{ duration: 0.3 }}
+    >
+      <Trophy className="h-6 w-6 text-health-500 mb-4" />
+      <p className="text-gray-700 dark:text-gray-300 italic mb-4">"{quote}"</p>
+      <div className="flex items-center">
+        <div className="bg-health-100 dark:bg-health-800/50 h-10 w-10 rounded-full flex items-center justify-center text-health-600 dark:text-health-400 font-semibold">
+          {author.charAt(0)}
+        </div>
+        <div className="ml-3">
+          <h4 className="font-medium text-gray-900 dark:text-white">{author}</h4>
+          <p className="text-sm text-gray-500 dark:text-gray-400">{role}</p>
+        </div>
+      </div>
     </motion.div>
   );
 };

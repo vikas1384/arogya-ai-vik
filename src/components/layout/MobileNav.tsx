@@ -5,7 +5,7 @@ import { Home, Stethoscope, Users, BarChart3, UserCircle } from "lucide-react";
 
 const MobileNav = () => {
   return (
-    <nav className="fixed bottom-0 inset-x-0 glassmorphism border-t border-gray-200 dark:border-gray-800 py-2 px-4 z-50">
+    <nav className="fixed bottom-0 inset-x-0 glassmorphism border-t border-gray-200 dark:border-gray-800 py-2 px-4 z-50 shadow-lg">
       <motion.div 
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -50,7 +50,7 @@ const NavItem = ({ to, icon, label }: NavItemProps) => {
           {isActive && (
             <motion.div
               layoutId="mobile-nav-indicator"
-              className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-health-500 rounded-full"
+              className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-health-500 rounded-full shadow-sm shadow-health-500/50"
               transition={{ duration: 0.5, type: "spring", bounce: 0.2 }}
             />
           )}

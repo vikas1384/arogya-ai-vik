@@ -1,26 +1,26 @@
 
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Heart, Stethoscope, UserCircle, BarChart3 } from "lucide-react";
+import { Heart, Stethoscope, UserCircle, BarChart3, Star } from "lucide-react";
 
 const Navbar = () => {
   return (
-    <header className="py-4 px-6 sticky top-0 z-50 backdrop-blur-lg bg-white/70 dark:bg-gray-900/70 border-b border-gray-200 dark:border-gray-800">
+    <header className="py-4 px-6 sticky top-0 z-50 backdrop-blur-lg bg-white/70 dark:bg-gray-900/70 border-b border-gray-200 dark:border-gray-800 shadow-sm">
       <div className="max-w-6xl mx-auto flex items-center justify-between">
         <NavLink to="/" className="flex items-center gap-2 group">
           <motion.div
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, rotate: 5 }}
             whileTap={{ scale: 0.95 }}
-            className="h-10 w-10 rounded-lg health-gradient flex items-center justify-center shadow-sm"
+            className="h-12 w-12 rounded-2xl bg-gradient-to-br from-health-400 to-health-600 flex items-center justify-center shadow-md"
           >
-            <Heart className="text-white h-5 w-5" />
+            <Star className="text-white h-7 w-7" />
           </motion.div>
           <div className="flex flex-col">
-            <span className="font-bold text-lg text-gray-900 dark:text-white group-hover:health-gradient-text transition-all duration-300">
+            <span className="font-bold text-xl text-gray-900 dark:text-white group-hover:health-gradient-text transition-all duration-300">
               Arogya AI
             </span>
             <span className="text-xs text-gray-500 dark:text-gray-400">
-              Your AI Doctor
+              Smart Health Assistant
             </span>
           </div>
         </NavLink>
@@ -46,9 +46,9 @@ const Navbar = () => {
             className={({ isActive }) => 
               `relative flex items-center justify-center h-10 w-10 rounded-full ${
                 isActive 
-                  ? 'bg-health-100 text-health-700 dark:bg-health-900 dark:text-health-400' 
+                  ? 'bg-health-50 text-health-700 dark:bg-health-900/50 dark:text-health-400' 
                   : 'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300'
-              } transition-all duration-300`
+              } transition-all duration-300 shadow-sm hover:shadow-md`
             }
           >
             <UserCircle className="h-5 w-5" />

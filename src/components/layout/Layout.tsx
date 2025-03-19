@@ -14,18 +14,37 @@ const Layout = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Background gradient */}
-      <div className="fixed inset-0 z-[-1] bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-gray-800 opacity-50"></div>
+      {/* Enhanced animated background gradient */}
+      <div className="fixed inset-0 z-[-1]">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-sky-50 dark:from-gray-900 dark:via-indigo-950 dark:to-gray-800 opacity-70"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-100/30 via-transparent to-transparent dark:from-blue-900/10 dark:via-transparent dark:to-transparent"></div>
+      </div>
+      
+      {/* Background shapes */}
+      <div className="fixed inset-0 z-[-1] overflow-hidden">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.4 }}
+          transition={{ duration: 1.5 }}
+          className="absolute top-10 right-[10%] w-64 h-64 rounded-full bg-health-200/30 dark:bg-health-700/10 blur-3xl"
+        />
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.3 }}
+          transition={{ duration: 1.5, delay: 0.3 }}
+          className="absolute bottom-10 left-[5%] w-72 h-72 rounded-full bg-indigo-200/30 dark:bg-indigo-700/10 blur-3xl"
+        />
+      </div>
       
       {/* Desktop navbar - hide on symptom analyzer if mobile for full immersion */}
       {!isMobile && <Navbar />}
       
-      {/* Page content with animation */}
+      {/* Page content with enhanced animation */}
       <motion.main
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -10 }}
-        transition={{ duration: 0.3, ease: [0.4, 0.0, 0.2, 1] }}
+        transition={{ duration: 0.4, ease: [0.4, 0.0, 0.2, 1] }}
         className={`mx-auto ${
           isSymptomAnalyzer 
             ? "max-w-6xl px-0 sm:px-4 pt-0 sm:pt-6" 
@@ -41,7 +60,7 @@ const Layout = () => {
         <div className="fixed bottom-4 right-4 z-40">
           <a
             href="/"
-            className="flex items-center justify-center w-12 h-12 rounded-full bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm shadow-lg border border-gray-200 dark:border-gray-700"
+            className="flex items-center justify-center w-12 h-12 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-lg border border-gray-200 dark:border-gray-700 hover:scale-105 transition-transform duration-300"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
