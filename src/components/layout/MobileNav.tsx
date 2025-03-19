@@ -12,7 +12,17 @@ const MobileNav = () => {
         transition={{ duration: 0.3 }}
         className="flex justify-around items-center"
       >
-        <NavItem to="/" icon={<Home />} label="Home" />
+        <NavItem 
+          to="/" 
+          icon={
+            <div className="flex items-center justify-center h-6 w-6 bg-blue-50 rounded-full">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="text-health-600">
+                <path d="M3 12H7.5L9.5 6L13.5 18L15.5 12H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+          } 
+          label="Home" 
+        />
         <NavItem to="/symptom-analyzer" icon={<Stethoscope />} label="Symptoms" />
         <NavItem to="/doctor-consultation" icon={<Users />} label="Doctors" />
         <NavItem to="/health-insights" icon={<BarChart3 />} label="Insights" />

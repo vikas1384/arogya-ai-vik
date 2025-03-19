@@ -1,26 +1,28 @@
 
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Heart, Stethoscope, UserCircle, BarChart3, Star } from "lucide-react";
+import { Stethoscope, UserCircle, BarChart3 } from "lucide-react";
 
 const Navbar = () => {
   return (
     <header className="py-4 px-6 sticky top-0 z-50 backdrop-blur-lg bg-white/70 dark:bg-gray-900/70 border-b border-gray-200 dark:border-gray-800 shadow-sm">
       <div className="max-w-6xl mx-auto flex items-center justify-between">
-        <NavLink to="/" className="flex items-center gap-2 group">
+        <NavLink to="/" className="flex items-center gap-3 group">
           <motion.div
-            whileHover={{ scale: 1.05, rotate: 5 }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="h-12 w-12 rounded-2xl bg-gradient-to-br from-health-400 to-health-600 flex items-center justify-center shadow-md"
+            className="h-12 w-12 rounded-full bg-blue-50 flex items-center justify-center shadow-sm"
           >
-            <Star className="text-white h-7 w-7" />
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-health-600">
+              <path d="M3 12H7.5L9.5 6L13.5 18L15.5 12H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </motion.div>
-          <div className="flex flex-col">
-            <span className="font-bold text-xl text-gray-900 dark:text-white group-hover:health-gradient-text transition-all duration-300">
+          <div className="flex flex-col text-left">
+            <span className="font-bold text-xl text-health-600 group-hover:text-health-700 transition-all duration-300">
               Arogya AI
             </span>
             <span className="text-xs text-gray-500 dark:text-gray-400">
-              Smart Health Assistant
+              Your AI Doctor, Anytime, Anywhere.
             </span>
           </div>
         </NavLink>
