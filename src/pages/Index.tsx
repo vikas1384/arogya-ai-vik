@@ -1,7 +1,8 @@
 
 import { motion } from "framer-motion";
-import { Shield, Heart, ArrowRight, ActivitySquare, Star, Sparkles } from "lucide-react";
+import { Shield, Heart, ArrowRight, ActivitySquare, Star, Sparkles, Brain, Cpu, Network, MicrochipIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Index = () => {
   return (
@@ -71,6 +72,70 @@ const Index = () => {
         </div>
       </motion.div>
 
+      {/* Advanced Features Section */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        className="w-full max-w-6xl px-4 mb-24"
+      >
+        <h2 className="text-3xl font-bold text-center mb-12 health-gradient-text">Advanced AI Capabilities</h2>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Advanced Card 1 */}
+          <Card className="hover-lift transition-all duration-300">
+            <CardHeader className="pb-2">
+              <div className="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-2">
+                <Brain className="h-6 w-6 text-health-600" />
+              </div>
+              <CardTitle>Neural Networks</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>Our deep learning models continuously improve diagnosis accuracy through neural network training.</CardDescription>
+            </CardContent>
+          </Card>
+
+          {/* Advanced Card 2 */}
+          <Card className="hover-lift transition-all duration-300">
+            <CardHeader className="pb-2">
+              <div className="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-2">
+                <MicrochipIcon className="h-6 w-6 text-health-600" />
+              </div>
+              <CardTitle>Edge Computing</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>Process health data locally on your device for faster results and enhanced privacy protection.</CardDescription>
+            </CardContent>
+          </Card>
+
+          {/* Advanced Card 3 */}
+          <Card className="hover-lift transition-all duration-300">
+            <CardHeader className="pb-2">
+              <div className="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-2">
+                <Network className="h-6 w-6 text-health-600" />
+              </div>
+              <CardTitle>Medical Network</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>Access India's largest network of AI-verified healthcare providers across all specialties.</CardDescription>
+            </CardContent>
+          </Card>
+
+          {/* Advanced Card 4 */}
+          <Card className="hover-lift transition-all duration-300">
+            <CardHeader className="pb-2">
+              <div className="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-2">
+                <Cpu className="h-6 w-6 text-health-600" />
+              </div>
+              <CardTitle>Smart Diagnostics</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>Our algorithms identify patterns in symptoms that human diagnosticians might overlook.</CardDescription>
+            </CardContent>
+          </Card>
+        </div>
+      </motion.div>
+
       {/* Testimonials Section */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -80,7 +145,7 @@ const Index = () => {
       >
         <h2 className="text-3xl font-bold text-center mb-12 health-gradient-text">What Our Users Say</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Testimonial 1 */}
           <div className="glass-card p-6 rounded-xl">
             <div className="flex items-center mb-4">
@@ -122,6 +187,145 @@ const Index = () => {
               </div>
             </div>
           </div>
+          
+          {/* Testimonial 3 - New Indian User */}
+          <div className="glass-card p-6 rounded-xl">
+            <div className="flex items-center mb-4">
+              <div className="flex text-yellow-400">
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+              </div>
+            </div>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">"After struggling to find a specialist for my daughter's rare condition, Arogya AI connected us with the right doctor within hours. Truly a life-changing app."</p>
+            <div className="flex items-center">
+              <div className="rounded-full bg-blue-100 h-10 w-10 flex items-center justify-center font-bold text-health-600">SP</div>
+              <div className="ml-3">
+                <p className="font-medium">Sunita Patel</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Ahmedabad</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Second row of testimonials */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+          {/* Testimonial 4 - New Indian User */}
+          <div className="glass-card p-6 rounded-xl">
+            <div className="flex items-center mb-4">
+              <div className="flex text-yellow-400">
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+              </div>
+            </div>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">"Being a diabetic patient, I use Arogya AI to monitor my symptoms daily. The health insights have helped me maintain better glucose levels consistently."</p>
+            <div className="flex items-center">
+              <div className="rounded-full bg-blue-100 h-10 w-10 flex items-center justify-center font-bold text-health-600">VR</div>
+              <div className="ml-3">
+                <p className="font-medium">Vikram Reddy</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Hyderabad</p>
+              </div>
+            </div>
+          </div>
+          
+          {/* Testimonial 5 - New Indian User */}
+          <div className="glass-card p-6 rounded-xl">
+            <div className="flex items-center mb-4">
+              <div className="flex text-yellow-400">
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+              </div>
+            </div>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">"The doctor consultation feature saved me during the pandemic. I could consult with top specialists from the comfort of my home. Highly recommended!"</p>
+            <div className="flex items-center">
+              <div className="rounded-full bg-blue-100 h-10 w-10 flex items-center justify-center font-bold text-health-600">AG</div>
+              <div className="ml-3">
+                <p className="font-medium">Anjali Gupta</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Bengaluru</p>
+              </div>
+            </div>
+          </div>
+          
+          {/* Testimonial 6 - New Indian User */}
+          <div className="glass-card p-6 rounded-xl">
+            <div className="flex items-center mb-4">
+              <div className="flex text-yellow-400">
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="w-5 h-5" />
+              </div>
+            </div>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">"I use Arogya AI for my entire family. The preventive health recommendations are practical and have helped us adopt healthier lifestyle choices."</p>
+            <div className="flex items-center">
+              <div className="rounded-full bg-blue-100 h-10 w-10 flex items-center justify-center font-bold text-health-600">MD</div>
+              <div className="ml-3">
+                <p className="font-medium">Manoj Desai</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Pune</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Statistics Cards Section */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.6 }}
+        className="w-full max-w-6xl px-4 mb-24"
+      >
+        <h2 className="text-3xl font-bold text-center mb-12 health-gradient-text">Making a Difference</h2>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Stat Card 1 */}
+          <Card className="text-center hover-lift transition-all duration-300">
+            <CardHeader>
+              <CardTitle className="text-4xl font-bold text-health-600">500K+</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600 dark:text-gray-300">Active Users Across India</p>
+            </CardContent>
+          </Card>
+
+          {/* Stat Card 2 */}
+          <Card className="text-center hover-lift transition-all duration-300">
+            <CardHeader>
+              <CardTitle className="text-4xl font-bold text-health-600">10K+</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600 dark:text-gray-300">Verified Medical Practitioners</p>
+            </CardContent>
+          </Card>
+
+          {/* Stat Card 3 */}
+          <Card className="text-center hover-lift transition-all duration-300">
+            <CardHeader>
+              <CardTitle className="text-4xl font-bold text-health-600">95%</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600 dark:text-gray-300">Diagnostic Accuracy Rate</p>
+            </CardContent>
+          </Card>
+
+          {/* Stat Card 4 */}
+          <Card className="text-center hover-lift transition-all duration-300">
+            <CardHeader>
+              <CardTitle className="text-4xl font-bold text-health-600">2M+</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600 dark:text-gray-300">Successful Consultations</p>
+            </CardContent>
+          </Card>
         </div>
       </motion.div>
 
