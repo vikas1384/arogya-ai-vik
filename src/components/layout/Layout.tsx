@@ -3,6 +3,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import Navbar from "./Navbar";
 import MobileNav from "./MobileNav";
+import Footer from "./Footer";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const Layout = () => {
@@ -13,7 +14,7 @@ const Layout = () => {
   const isSymptomAnalyzer = location.pathname === "/symptom-analyzer";
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen flex flex-col bg-background">
       {/* Enhanced animated background gradient */}
       <div className="fixed inset-0 z-[-1]">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-sky-50 dark:from-gray-900 dark:via-indigo-950 dark:to-gray-800 opacity-70"></div>
@@ -45,7 +46,7 @@ const Layout = () => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -10 }}
         transition={{ duration: 0.4, ease: [0.4, 0.0, 0.2, 1] }}
-        className={`mx-auto ${
+        className={`mx-auto flex-grow ${
           isSymptomAnalyzer 
             ? "max-w-6xl px-0 sm:px-4 pt-0 sm:pt-6" 
             : "max-w-6xl px-4 sm:px-6 lg:px-8 pt-6"
@@ -53,6 +54,9 @@ const Layout = () => {
       >
         <Outlet />
       </motion.main>
+      
+      {/* Footer - hide on symptom analyzer for full immersion */}
+      {!isSymptomAnalyzer && <Footer />}
       
       {/* Mobile navigation - hide on symptom analyzer for full immersion */}
       {isMobile && !isSymptomAnalyzer && <MobileNav />}
