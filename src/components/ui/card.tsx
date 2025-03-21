@@ -1,18 +1,28 @@
 
 import * as React from "react"
-
 import { cn } from "@/lib/utils"
 
 // Make the category variable globally accessible
-if (typeof window !== 'undefined') {
-  // Define category directly as a global variable
-  window.category = "arogya";
-  
-  // Also provide a structured object for components that expect it
-  window.globalArogyaVars = {
-    category: "arogya"
-  };
-}
+// Execute this code as early as possible during initialization
+(function initGlobalVariables() {
+  if (typeof window !== 'undefined') {
+    // Define category as a properly typed global variable
+    window.category = "arogya";
+    
+    // Provide a structured object for components that might expect it
+    window.globalArogyaVars = {
+      category: "arogya",
+      version: "1.0.0",
+      features: {
+        symptomAnalysis: true,
+        doctorConsultation: true,
+        healthInsights: true
+      }
+    };
+    
+    console.log("Global Arogya variables initialized successfully");
+  }
+})();
 
 // Add TypeScript declarations to avoid TS errors
 declare global {
@@ -20,9 +30,20 @@ declare global {
     category: string;
     globalArogyaVars: {
       category: string;
+      version: string;
+      features: {
+        symptomAnalysis: boolean;
+        doctorConsultation: boolean;
+        healthInsights: boolean;
+      };
     };
   }
 }
+
+// Add this to ensure category is available in all module scopes
+// This creates a magic global without using window
+// @ts-ignore - Necessary to create a pseudo-global in module scope
+globalThis.category = "arogya";
 
 const Card = React.forwardRef<
   HTMLDivElement,
