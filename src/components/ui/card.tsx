@@ -1,10 +1,13 @@
-
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-// Add a global category for components that might need it
-if (typeof window !== 'undefined' && !window.hasOwnProperty('globalArogyaVars')) {
+// Make the category variable globally accessible
+if (typeof window !== 'undefined') {
+  // Define category directly in the global scope
+  (window as any).category = "arogya";
+  
+  // Also keep the structured version for other components
   (window as any).globalArogyaVars = {
     category: "arogya"
   };
