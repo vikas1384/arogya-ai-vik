@@ -3,6 +3,13 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
+// Add a global category for components that might need it
+if (typeof window !== 'undefined' && !window.hasOwnProperty('globalArogyaVars')) {
+  (window as any).globalArogyaVars = {
+    category: "arogya"
+  };
+}
+
 const Card = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
