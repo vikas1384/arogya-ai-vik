@@ -83,7 +83,7 @@ const Index = () => {
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Advanced Card 1 */}
-          <Card className="hover-lift transition-all duration-300">
+          <Card className="hover:scale-105 transition-all duration-300">
             <CardHeader className="pb-2">
               <div className="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-2">
                 <Brain className="h-6 w-6 text-health-600" />
@@ -96,7 +96,7 @@ const Index = () => {
           </Card>
 
           {/* Advanced Card 2 */}
-          <Card className="hover-lift transition-all duration-300">
+          <Card className="hover:scale-105 transition-all duration-300">
             <CardHeader className="pb-2">
               <div className="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-2">
                 <MicrochipIcon className="h-6 w-6 text-health-600" />
@@ -109,7 +109,7 @@ const Index = () => {
           </Card>
 
           {/* Advanced Card 3 */}
-          <Card className="hover-lift transition-all duration-300">
+          <Card className="hover:scale-105 transition-all duration-300">
             <CardHeader className="pb-2">
               <div className="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-2">
                 <Network className="h-6 w-6 text-health-600" />
@@ -122,7 +122,7 @@ const Index = () => {
           </Card>
 
           {/* Advanced Card 4 */}
-          <Card className="hover-lift transition-all duration-300">
+          <Card className="hover:scale-105 transition-all duration-300">
             <CardHeader className="pb-2">
               <div className="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-2">
                 <Cpu className="h-6 w-6 text-health-600" />
@@ -136,7 +136,7 @@ const Index = () => {
         </div>
       </motion.div>
 
-      {/* Testimonials Section */}
+      {/* Testimonials Section - Updated with more Indian reviews */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -147,7 +147,7 @@ const Index = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Testimonial 1 */}
-          <div className="glass-card p-6 rounded-xl">
+          <div className="glass-card p-6 rounded-xl hover:shadow-lg transition-all duration-300">
             <div className="flex items-center mb-4">
               <div className="flex text-yellow-400">
                 <Star className="fill-current w-5 h-5" />
@@ -168,7 +168,7 @@ const Index = () => {
           </div>
           
           {/* Testimonial 2 */}
-          <div className="glass-card p-6 rounded-xl">
+          <div className="glass-card p-6 rounded-xl hover:shadow-lg transition-all duration-300">
             <div className="flex items-center mb-4">
               <div className="flex text-yellow-400">
                 <Star className="fill-current w-5 h-5" />
@@ -188,8 +188,8 @@ const Index = () => {
             </div>
           </div>
           
-          {/* Testimonial 3 - New Indian User */}
-          <div className="glass-card p-6 rounded-xl">
+          {/* Testimonial 3 */}
+          <div className="glass-card p-6 rounded-xl hover:shadow-lg transition-all duration-300">
             <div className="flex items-center mb-4">
               <div className="flex text-yellow-400">
                 <Star className="fill-current w-5 h-5" />
@@ -210,10 +210,10 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Second row of testimonials */}
+        {/* Second row of testimonials - Updated with more Indian reviews */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-          {/* Testimonial 4 - New Indian User */}
-          <div className="glass-card p-6 rounded-xl">
+          {/* Testimonial 4 */}
+          <div className="glass-card p-6 rounded-xl hover:shadow-lg transition-all duration-300">
             <div className="flex items-center mb-4">
               <div className="flex text-yellow-400">
                 <Star className="fill-current w-5 h-5" />
@@ -233,8 +233,8 @@ const Index = () => {
             </div>
           </div>
           
-          {/* Testimonial 5 - New Indian User */}
-          <div className="glass-card p-6 rounded-xl">
+          {/* Testimonial 5 */}
+          <div className="glass-card p-6 rounded-xl hover:shadow-lg transition-all duration-300">
             <div className="flex items-center mb-4">
               <div className="flex text-yellow-400">
                 <Star className="fill-current w-5 h-5" />
@@ -254,8 +254,8 @@ const Index = () => {
             </div>
           </div>
           
-          {/* Testimonial 6 - New Indian User */}
-          <div className="glass-card p-6 rounded-xl">
+          {/* Testimonial 6 */}
+          <div className="glass-card p-6 rounded-xl hover:shadow-lg transition-all duration-300">
             <div className="flex items-center mb-4">
               <div className="flex text-yellow-400">
                 <Star className="fill-current w-5 h-5" />
@@ -275,6 +275,72 @@ const Index = () => {
             </div>
           </div>
         </div>
+        
+        {/* Third row of testimonials - New Indian reviews */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+          {/* Testimonial 7 */}
+          <div className="glass-card p-6 rounded-xl hover:shadow-lg transition-all duration-300">
+            <div className="flex items-center mb-4">
+              <div className="flex text-yellow-400">
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+              </div>
+            </div>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">"The Ayurvedic integration with modern medicine suggestions in Arogya AI is remarkable. It helped me find the perfect balance for my chronic condition."</p>
+            <div className="flex items-center">
+              <div className="rounded-full bg-blue-100 h-10 w-10 flex items-center justify-center font-bold text-health-600">KB</div>
+              <div className="ml-3">
+                <p className="font-medium">Kavita Bajaj</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Jaipur</p>
+              </div>
+            </div>
+          </div>
+          
+          {/* Testimonial 8 */}
+          <div className="glass-card p-6 rounded-xl hover:shadow-lg transition-all duration-300">
+            <div className="flex items-center mb-4">
+              <div className="flex text-yellow-400">
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+              </div>
+            </div>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">"My elderly parents live in a remote village. Arogya AI has been a lifeline, connecting them to specialists and providing regular health monitoring without travel."</p>
+            <div className="flex items-center">
+              <div className="rounded-full bg-blue-100 h-10 w-10 flex items-center justify-center font-bold text-health-600">RG</div>
+              <div className="ml-3">
+                <p className="font-medium">Rajendra Gupta</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Lucknow</p>
+              </div>
+            </div>
+          </div>
+          
+          {/* Testimonial 9 */}
+          <div className="glass-card p-6 rounded-xl hover:shadow-lg transition-all duration-300">
+            <div className="flex items-center mb-4">
+              <div className="flex text-yellow-400">
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+              </div>
+            </div>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">"As a medical student, I use Arogya AI to validate my diagnoses. Its accuracy and detailed explanations have become an essential part of my learning."</p>
+            <div className="flex items-center">
+              <div className="rounded-full bg-blue-100 h-10 w-10 flex items-center justify-center font-bold text-health-600">DS</div>
+              <div className="ml-3">
+                <p className="font-medium">Dr. Sanjay Sharma</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Chennai</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </motion.div>
 
       {/* Statistics Cards Section */}
@@ -288,7 +354,7 @@ const Index = () => {
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Stat Card 1 */}
-          <Card className="text-center hover-lift transition-all duration-300">
+          <Card className="text-center hover:scale-105 transition-all duration-300">
             <CardHeader>
               <CardTitle className="text-4xl font-bold text-health-600">500K+</CardTitle>
             </CardHeader>
@@ -298,7 +364,7 @@ const Index = () => {
           </Card>
 
           {/* Stat Card 2 */}
-          <Card className="text-center hover-lift transition-all duration-300">
+          <Card className="text-center hover:scale-105 transition-all duration-300">
             <CardHeader>
               <CardTitle className="text-4xl font-bold text-health-600">10K+</CardTitle>
             </CardHeader>
@@ -308,7 +374,7 @@ const Index = () => {
           </Card>
 
           {/* Stat Card 3 */}
-          <Card className="text-center hover-lift transition-all duration-300">
+          <Card className="text-center hover:scale-105 transition-all duration-300">
             <CardHeader>
               <CardTitle className="text-4xl font-bold text-health-600">95%</CardTitle>
             </CardHeader>
@@ -318,13 +384,65 @@ const Index = () => {
           </Card>
 
           {/* Stat Card 4 */}
-          <Card className="text-center hover-lift transition-all duration-300">
+          <Card className="text-center hover:scale-105 transition-all duration-300">
             <CardHeader>
               <CardTitle className="text-4xl font-bold text-health-600">2M+</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-gray-600 dark:text-gray-300">Successful Consultations</p>
             </CardContent>
+          </Card>
+        </div>
+        
+        {/* New advanced feature cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+          {/* Advanced Stat Card 1 */}
+          <Card className="hover:scale-105 transition-all duration-300 border-health-200 dark:border-health-800">
+            <CardHeader className="pb-2">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-health-200 to-blue-300 dark:from-health-800 dark:to-blue-700 flex items-center justify-center">
+                  <Sparkles className="h-6 w-6 text-white" />
+                </div>
+                <CardTitle>Multilingual Support</CardTitle>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <CardDescription className="text-base mt-2">
+                Our platform supports 14 Indian languages including Hindi, Tamil, Bengali, Telugu, Marathi, Gujarati, and more, making healthcare accessible across the nation.
+              </CardDescription>
+            </CardContent>
+            <CardFooter className="pt-4 border-t">
+              <div className="flex gap-2 flex-wrap">
+                <span className="px-2 py-1 text-xs bg-blue-100 dark:bg-blue-900/30 rounded-full text-health-700 dark:text-health-300">Hindi</span>
+                <span className="px-2 py-1 text-xs bg-blue-100 dark:bg-blue-900/30 rounded-full text-health-700 dark:text-health-300">Tamil</span>
+                <span className="px-2 py-1 text-xs bg-blue-100 dark:bg-blue-900/30 rounded-full text-health-700 dark:text-health-300">Telugu</span>
+                <span className="px-2 py-1 text-xs bg-blue-100 dark:bg-blue-900/30 rounded-full text-health-700 dark:text-health-300">Bengali</span>
+                <span className="px-2 py-1 text-xs bg-blue-100 dark:bg-blue-900/30 rounded-full text-health-700 dark:text-health-300">+10 more</span>
+              </div>
+            </CardFooter>
+          </Card>
+
+          {/* Advanced Stat Card 2 */}
+          <Card className="hover:scale-105 transition-all duration-300 border-health-200 dark:border-health-800">
+            <CardHeader className="pb-2">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-200 to-indigo-300 dark:from-purple-800 dark:to-indigo-700 flex items-center justify-center">
+                  <Brain className="h-6 w-6 text-white" />
+                </div>
+                <CardTitle>AI Diagnostic Accuracy</CardTitle>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <CardDescription className="text-base mt-2">
+                Our AI models are trained on millions of medical records and validated by top medical institutions across India, achieving diagnostic accuracy that rivals experienced specialists.
+              </CardDescription>
+            </CardContent>
+            <CardFooter className="pt-4 border-t">
+              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                <div className="bg-health-600 h-2.5 rounded-full" style={{ width: '95%' }}></div>
+              </div>
+              <span className="ml-auto text-sm font-medium text-health-600">95% accuracy</span>
+            </CardFooter>
           </Card>
         </div>
       </motion.div>
