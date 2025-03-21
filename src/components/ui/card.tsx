@@ -1,16 +1,27 @@
+
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
 // Make the category variable globally accessible
 if (typeof window !== 'undefined') {
-  // Define category directly in the global scope
-  (window as any).category = "arogya";
+  // Define category directly as a global variable
+  window.category = "arogya";
   
-  // Also keep the structured version for other components
-  (window as any).globalArogyaVars = {
+  // Also provide a structured object for components that expect it
+  window.globalArogyaVars = {
     category: "arogya"
   };
+}
+
+// Add TypeScript declarations to avoid TS errors
+declare global {
+  interface Window {
+    category: string;
+    globalArogyaVars: {
+      category: string;
+    };
+  }
 }
 
 const Card = React.forwardRef<
