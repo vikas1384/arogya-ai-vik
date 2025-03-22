@@ -1,6 +1,6 @@
 
 import { motion } from "framer-motion";
-import { Shield, Heart, ArrowRight, ActivitySquare, Star, Sparkles, Brain, Cpu, Network, MicrochipIcon } from "lucide-react";
+import { Shield, Heart, ArrowRight, ActivitySquare, Star, Sparkles, Brain, Cpu, Network, MicrochipIcon, Globe, Languages, Focus, Stethoscope, FileText, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -72,6 +72,45 @@ const Index = () => {
         </div>
       </motion.div>
 
+      {/* New Indian Ayurveda Feature Section */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.35 }}
+        className="w-full max-w-6xl px-4 mb-16"
+      >
+        <h2 className="text-3xl font-bold text-center mb-12 health-gradient-text">Traditional Meets Technology</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Ayurveda Feature */}
+          <div className="glass-card-hover p-6 rounded-xl flex flex-col items-center text-center">
+            <div className="bg-green-100 dark:bg-green-900/30 p-3 rounded-full mb-4">
+              <Stethoscope className="h-6 w-6 text-green-600" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">Ayurvedic Insights</h3>
+            <p className="text-gray-600 dark:text-gray-300">Blending ancient Ayurvedic principles with modern medicine for holistic health recommendations.</p>
+          </div>
+          
+          {/* Multilingual Feature */}
+          <div className="glass-card-hover p-6 rounded-xl flex flex-col items-center text-center">
+            <div className="bg-purple-100 dark:bg-purple-900/30 p-3 rounded-full mb-4">
+              <Languages className="h-6 w-6 text-purple-600" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">Indian Languages Support</h3>
+            <p className="text-gray-600 dark:text-gray-300">Access healthcare in 12+ Indian languages including Hindi, Tamil, Telugu, Bengali, and more.</p>
+          </div>
+          
+          {/* Rural Healthcare Feature */}
+          <div className="glass-card-hover p-6 rounded-xl flex flex-col items-center text-center">
+            <div className="bg-amber-100 dark:bg-amber-900/30 p-3 rounded-full mb-4">
+              <Globe className="h-6 w-6 text-amber-600" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">Rural Healthcare Access</h3>
+            <p className="text-gray-600 dark:text-gray-300">Bringing quality healthcare to remote villages through our offline-capable mobile application.</p>
+          </div>
+        </div>
+      </motion.div>
+
       {/* Advanced Features Section */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -131,6 +170,61 @@ const Index = () => {
             </CardHeader>
             <CardContent>
               <CardDescription>Our algorithms identify patterns in symptoms that human diagnosticians might overlook.</CardDescription>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Additional Advanced Feature Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+          {/* New Feature Card 1 */}
+          <Card className="hover:scale-105 transition-all duration-300">
+            <CardHeader className="pb-2">
+              <div className="w-12 h-12 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center mb-2">
+                <FileText className="h-6 w-6 text-green-600" />
+              </div>
+              <CardTitle>Medical Records</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>Securely store and access your medical records, prescriptions, and test results from anywhere.</CardDescription>
+            </CardContent>
+          </Card>
+
+          {/* New Feature Card 2 */}
+          <Card className="hover:scale-105 transition-all duration-300">
+            <CardHeader className="pb-2">
+              <div className="w-12 h-12 rounded-lg bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mb-2">
+                <Focus className="h-6 w-6 text-purple-600" />
+              </div>
+              <CardTitle>Mental Wellness</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>AI-powered tools to monitor, analyze, and improve your mental health and emotional wellbeing.</CardDescription>
+            </CardContent>
+          </Card>
+
+          {/* New Feature Card 3 */}
+          <Card className="hover:scale-105 transition-all duration-300">
+            <CardHeader className="pb-2">
+              <div className="w-12 h-12 rounded-lg bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mb-2">
+                <Zap className="h-6 w-6 text-amber-600" />
+              </div>
+              <CardTitle>Instant Reports</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>Receive instant analysis of medical reports with highlighted concerns and simplified explanations.</CardDescription>
+            </CardContent>
+          </Card>
+
+          {/* New Feature Card 4 */}
+          <Card className="hover:scale-105 transition-all duration-300">
+            <CardHeader className="pb-2">
+              <div className="w-12 h-12 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center mb-2">
+                <Heart className="h-6 w-6 text-red-600" />
+              </div>
+              <CardTitle>Emergency Care</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>One-tap emergency assistance with automatic location sharing and medical history access.</CardDescription>
             </CardContent>
           </Card>
         </div>
@@ -337,6 +431,72 @@ const Index = () => {
               <div className="ml-3">
                 <p className="font-medium">Dr. Sanjay Sharma</p>
                 <p className="text-sm text-gray-500 dark:text-gray-400">Chennai</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Fourth row of testimonials - New Indian reviews */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+          {/* Testimonial 10 */}
+          <div className="glass-card p-6 rounded-xl hover:shadow-lg transition-all duration-300">
+            <div className="flex items-center mb-4">
+              <div className="flex text-yellow-400">
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+              </div>
+            </div>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">"आरोग्य AI ने मेरे बच्चे के स्वास्थ्य को ट्रैक करने में मदद की। हिंदी में सुविधा होने से मुझे इसका उपयोग करना आसान लगता है।"</p>
+            <div className="flex items-center">
+              <div className="rounded-full bg-blue-100 h-10 w-10 flex items-center justify-center font-bold text-health-600">SY</div>
+              <div className="ml-3">
+                <p className="font-medium">Seema Yadav</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Varanasi</p>
+              </div>
+            </div>
+          </div>
+          
+          {/* Testimonial 11 */}
+          <div className="glass-card p-6 rounded-xl hover:shadow-lg transition-all duration-300">
+            <div className="flex items-center mb-4">
+              <div className="flex text-yellow-400">
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+              </div>
+            </div>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">"ஆரோக்கிய AI என் பாரம்பரிய மருத்துவத்துடன் நவீன மருத்துவத்தை இணைக்கிறது. இது என் நாள்பட்ட வலிக்கு உதவியது."</p>
+            <div className="flex items-center">
+              <div className="rounded-full bg-blue-100 h-10 w-10 flex items-center justify-center font-bold text-health-600">NK</div>
+              <div className="ml-3">
+                <p className="font-medium">Nandhini Krishnan</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Coimbatore</p>
+              </div>
+            </div>
+          </div>
+          
+          {/* Testimonial 12 */}
+          <div className="glass-card p-6 rounded-xl hover:shadow-lg transition-all duration-300">
+            <div className="flex items-center mb-4">
+              <div className="flex text-yellow-400">
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+                <Star className="fill-current w-5 h-5" />
+              </div>
+            </div>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">"मी ग्रामीण भागात आरोग्य सेवा देतो. आरोग्य AI मला दूरस्थ रुग्णांसाठी अचूक निदान करण्यात मदत करते."</p>
+            <div className="flex items-center">
+              <div className="rounded-full bg-blue-100 h-10 w-10 flex items-center justify-center font-bold text-health-600">AP</div>
+              <div className="ml-3">
+                <p className="font-medium">Dr. Aditya Patil</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Nagpur</p>
               </div>
             </div>
           </div>
