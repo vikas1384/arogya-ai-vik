@@ -1,4 +1,5 @@
 
+import { motion } from "framer-motion";
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 
 interface StatisticsCardProps {
@@ -8,14 +9,16 @@ interface StatisticsCardProps {
 
 const StatisticsCard = ({ value, description }: StatisticsCardProps) => {
   return (
-    <Card className="text-center hover:scale-105 transition-all duration-300">
-      <CardHeader>
-        <CardTitle className="text-4xl font-bold text-health-600">{value}</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <p className="text-gray-600 dark:text-gray-300">{description}</p>
-      </CardContent>
-    </Card>
+    <motion.div whileHover={{ y: -8 }} transition={{ duration: 0.3 }}>
+      <Card className="text-center h-full">
+        <CardHeader>
+          <CardTitle className="text-4xl font-bold text-health-600 dark:text-health-400">{value}</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-gray-600 dark:text-gray-300">{description}</p>
+        </CardContent>
+      </Card>
+    </motion.div>
   );
 };
 

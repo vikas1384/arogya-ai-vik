@@ -12,7 +12,11 @@ interface TestimonialCardProps {
 
 const TestimonialCard = ({ quote, author, location, rating = 5, initials }: TestimonialCardProps) => {
   return (
-    <div className="glass-card p-6 rounded-xl hover:shadow-lg transition-all duration-300">
+    <motion.div
+      whileHover={{ y: -8 }}
+      transition={{ duration: 0.3 }}
+      className="glass-card p-6 rounded-xl hover:shadow-lg transition-all duration-300 h-full flex flex-col"
+    >
       <div className="flex items-center mb-4">
         <div className="flex text-yellow-400">
           {[...Array(5)].map((_, i) => (
@@ -23,9 +27,9 @@ const TestimonialCard = ({ quote, author, location, rating = 5, initials }: Test
           ))}
         </div>
       </div>
-      <p className="text-gray-600 dark:text-gray-300 mb-4">{quote}</p>
-      <div className="flex items-center">
-        <div className="rounded-full bg-blue-100 h-10 w-10 flex items-center justify-center font-bold text-health-600">
+      <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow">{quote}</p>
+      <div className="flex items-center mt-auto">
+        <div className="rounded-full bg-blue-100 dark:bg-blue-900/30 h-10 w-10 flex items-center justify-center font-bold text-health-600 dark:text-health-400">
           {initials}
         </div>
         <div className="ml-3">
@@ -33,7 +37,7 @@ const TestimonialCard = ({ quote, author, location, rating = 5, initials }: Test
           <p className="text-sm text-gray-500 dark:text-gray-400">{location}</p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

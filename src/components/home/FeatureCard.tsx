@@ -18,13 +18,17 @@ const FeatureCard = ({
   iconColor = "text-health-600" 
 }: FeatureCardProps) => {
   return (
-    <div className="glass-card-hover p-6 rounded-xl flex flex-col items-center text-center">
+    <motion.div 
+      whileHover={{ y: -8 }}
+      transition={{ duration: 0.3 }}
+      className="glass-card-hover p-6 rounded-xl flex flex-col items-center text-center h-full"
+    >
       <div className={`${bgColor} p-3 rounded-full mb-4`}>
         <div className={iconColor}>{icon}</div>
       </div>
       <h3 className="text-xl font-semibold mb-2">{title}</h3>
       <p className="text-gray-600 dark:text-gray-300">{description}</p>
-    </div>
+    </motion.div>
   );
 };
 

@@ -90,12 +90,6 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => {
-  // Split testimonials into rows of 3
-  const rows = [];
-  for (let i = 0; i < testimonials.length; i += 3) {
-    rows.push(testimonials.slice(i, i + 3));
-  }
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -104,23 +98,24 @@ const TestimonialsSection = () => {
       className="w-full max-w-6xl px-4 mb-24"
     >
       <h2 className="text-3xl font-bold text-center mb-12 health-gradient-text">
-        What Our Users Say
+        Trusted by thousands worldwide
       </h2>
+      <p className="text-center text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto">
+        See what our users have to say about their experience with Arogya AI
+      </p>
       
-      {rows.map((row, rowIndex) => (
-        <div key={rowIndex} className={`grid grid-cols-1 md:grid-cols-3 gap-6 ${rowIndex > 0 ? 'mt-6' : ''}`}>
-          {row.map((testimonial, index) => (
-            <TestimonialCard
-              key={index}
-              quote={testimonial.quote}
-              author={testimonial.author}
-              location={testimonial.location}
-              rating={testimonial.rating}
-              initials={testimonial.initials}
-            />
-          ))}
-        </div>
-      ))}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {testimonials.map((testimonial, index) => (
+          <TestimonialCard
+            key={index}
+            quote={testimonial.quote}
+            author={testimonial.author}
+            location={testimonial.location}
+            rating={testimonial.rating}
+            initials={testimonial.initials}
+          />
+        ))}
+      </div>
     </motion.div>
   );
 };
