@@ -1,49 +1,71 @@
-
 import * as React from "react"
 import { cn } from "@/lib/utils"
 
-// Make the category variable globally accessible
-// Execute this code as early as possible during initialization
-(function initGlobalVariables() {
+/**
+ * Global Variable Initialization
+ * Safely initializes global state variables across different environments
+ */
+(function initGlobalHealthPlatform() {
+  // Check for window to ensure we're in a browser environment
   if (typeof window !== 'undefined') {
-    // Define category as a properly typed global variable
-    window.category = "arogya";
-    
-    // Provide a structured object for components that might expect it
-    window.globalArogyaVars = {
-      category: "arogya",
-      version: "1.0.0",
-      features: {
-        symptomAnalysis: true,
-        doctorConsultation: true,
-        healthInsights: true
-      }
-    };
-    
-    console.log("Global Arogya variables initialized successfully");
+    try {
+      // Primary category identifier
+      window.category = "arogya";
+      
+      // Comprehensive platform configuration
+      window.globalArogyaVars = {
+        category: "arogya",
+        version: "1.2.0", // Semantic versioning
+        features: {
+          symptomAnalysis: true,
+          doctorConsultation: true,
+          healthInsights: true,
+          aiDiagnosis: true,
+          teleMedicine: true,
+          realTimeMonitoring: false // Feature flag for upcoming functionality
+        },
+        user: {
+          isAuthenticated: false,
+          preferredLanguage: navigator.language || 'en-US',
+          accessLevel: 'basic'
+        },
+        system: {
+          isOnline: navigator.onLine,
+          lastUpdated: new Date().toISOString(),
+          apiEndpoints: {
+            symptoms: '/api/symptoms',
+            doctors: '/api/doctors',
+            insights: '/api/insights'
+          }
+        }
+      };
+      
+      // Add event listeners to track system state
+      window.addEventListener('online', () => {
+        if (window.globalArogyaVars?.system) {
+          window.globalArogyaVars.system.isOnline = true;
+        }
+      });
+      
+      window.addEventListener('offline', () => {
+        if (window.globalArogyaVars?.system) {
+          window.globalArogyaVars.system.isOnline = false;
+        }
+      });
+      
+      console.log("✅ Global Arogya Platform initialized successfully");
+    } catch (error) {
+      console.error("⚠️ Failed to initialize global Arogya variables:", error);
+    }
   }
 })();
 
-// Add TypeScript declarations to avoid TS errors
-declare global {
-  interface Window {
-    category: string;
-    globalArogyaVars: {
-      category: string;
-      version: string;
-      features: {
-        symptomAnalysis: boolean;
-        doctorConsultation: boolean;
-        healthInsights: boolean;
-      };
-    };
-  }
-}
-
-// Add this to ensure category is available in all module scopes
-// This creates a magic global without using window
-// @ts-ignore - Necessary to create a pseudo-global in module scope
+// Also make category available in module scope for better reliability
+// @ts-ignore - Creating a module-level pseudo-global
 globalThis.category = "arogya";
+
+// Card Components
+// Enhanced shadcn/ui card components with improved animations and interactions
 
 const Card = React.forwardRef<
   HTMLDivElement,

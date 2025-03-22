@@ -1,12 +1,15 @@
 
 /// <reference types="vite/client" />
 
-// Global declarations for TypeScript
+/**
+ * Global declarations for TypeScript
+ * These ensure proper typing across the application
+ */
 declare global {
-  // Allow 'category' to be used in any file without explicit import
+  // Core variables
   const category: string;
   
-  // Add more global types as needed
+  // Enhanced global object with comprehensive health platform variables
   interface Window {
     category: string;
     globalArogyaVars: {
@@ -16,6 +19,19 @@ declare global {
         symptomAnalysis: boolean;
         doctorConsultation: boolean;
         healthInsights: boolean;
+        aiDiagnosis?: boolean;
+        teleMedicine?: boolean;
+        realTimeMonitoring?: boolean;
+      };
+      user?: {
+        isAuthenticated: boolean;
+        preferredLanguage?: string;
+        accessLevel?: 'basic' | 'premium' | 'professional';
+      };
+      system?: {
+        isOnline: boolean;
+        lastUpdated: string;
+        apiEndpoints?: Record<string, string>;
       };
     };
   }
