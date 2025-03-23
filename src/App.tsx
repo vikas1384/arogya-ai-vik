@@ -11,6 +11,7 @@ import { lazy, Suspense } from "react";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFound";
 import Layout from "./components/layout/Layout";
+import SymptomChecker from "./pages/SymptomChecker";
 
 // Lazy loaded pages for better performance
 const SymptomAnalyzer = lazy(() => import("./pages/SymptomAnalyzer"));
@@ -31,6 +32,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<HomePage />} />
+              <Route path="symptom-checker" element={<SymptomChecker />} />
               <Route path="symptom-analyzer" element={
                 <Suspense fallback={<PageLoader />}>
                   <SymptomAnalyzer />
