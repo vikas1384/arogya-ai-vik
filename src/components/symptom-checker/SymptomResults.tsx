@@ -164,10 +164,12 @@ const SymptomResults = ({ diagnosis, isLoading, error }: SymptomResultsProps) =>
                         <span>Likelihood</span>
                         <span>{Math.round(result.probability * 100)}%</span>
                       </div>
-                      <Progress value={result.probability * 100} className="h-2" 
-                        indicatorClassName={
-                          result.probability > 0.7 ? "bg-health-600" : 
-                          result.probability > 0.4 ? "bg-health-400" : "bg-health-300"
+                      <Progress 
+                        value={result.probability * 100} 
+                        className="h-2" 
+                        color={
+                          result.probability > 0.7 ? "var(--health-600)" : 
+                          result.probability > 0.4 ? "var(--health-400)" : "var(--health-300)"
                         }
                       />
                     </div>
