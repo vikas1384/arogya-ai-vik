@@ -12,7 +12,9 @@ export const analyzeSymptoms = async (symptoms: string): Promise<Diagnosis[]> =>
   const lowerCaseSymptoms = symptoms.toLowerCase();
   const results: Diagnosis[] = [];
   
-  // More sophisticated pattern matching
+  // More sophisticated pattern matching with expanded condition set
+  
+  // Headache related conditions
   if (lowerCaseSymptoms.includes('headache')) {
     if (lowerCaseSymptoms.includes('severe') || lowerCaseSymptoms.includes('worst') || lowerCaseSymptoms.includes('intense')) {
       results.push({
@@ -26,6 +28,19 @@ export const analyzeSymptoms = async (symptoms: string): Promise<Diagnosis[]> =>
           'Track triggers to prevent future episodes'
         ],
         severity: 'medium'
+      });
+    } else if (lowerCaseSymptoms.includes('behind eyes') || lowerCaseSymptoms.includes('sinus') || lowerCaseSymptoms.includes('face pain')) {
+      results.push({
+        condition: 'Sinusitis',
+        probability: 0.72,
+        description: 'Inflammation of the sinuses that can cause facial pain, pressure, and congestion.',
+        recommendations: [
+          'Nasal decongestants or saline spray',
+          'Steam inhalation',
+          'Warm compresses on face',
+          'Consult doctor if persistent'
+        ],
+        severity: 'low'
       });
     }
     
@@ -60,6 +75,40 @@ export const analyzeSymptoms = async (symptoms: string): Promise<Diagnosis[]> =>
     }
   }
   
+  // Respiratory conditions
+  if (lowerCaseSymptoms.includes('breath') || lowerCaseSymptoms.includes('breathing') || lowerCaseSymptoms.includes('short of breath')) {
+    if (lowerCaseSymptoms.includes('wheez') || lowerCaseSymptoms.includes('tight chest')) {
+      results.push({
+        condition: 'Asthma',
+        probability: 0.65,
+        description: 'A condition in which your airways narrow and swell and may produce extra mucus, making breathing difficult.',
+        recommendations: [
+          'Use rescue inhaler if prescribed',
+          'Avoid known triggers',
+          'Follow asthma action plan',
+          'Seek emergency care if severe'
+        ],
+        severity: 'medium'
+      });
+    }
+    
+    if (lowerCaseSymptoms.includes('anxiety') || lowerCaseSymptoms.includes('panic') || lowerCaseSymptoms.includes('stress')) {
+      results.push({
+        condition: 'Anxiety-Induced Hyperventilation',
+        probability: 0.58,
+        description: 'Rapid breathing caused by anxiety that can lead to dizziness, numbness in extremities, and chest tightness.',
+        recommendations: [
+          'Practice slow, deep breathing techniques',
+          'Try grounding exercises',
+          'Seek mental health support',
+          'Consider relaxation techniques like meditation'
+        ],
+        severity: 'low'
+      });
+    }
+  }
+  
+  // Fever related conditions
   if (lowerCaseSymptoms.includes('fever') || lowerCaseSymptoms.includes('temperature')) {
     let severityLevel: 'low' | 'medium' | 'high' = 'low';
     let probability = 0.78;
@@ -82,6 +131,9 @@ export const analyzeSymptoms = async (symptoms: string): Promise<Diagnosis[]> =>
         severityLevel = 'medium';
         probability = 0.85;
       }
+    } else if (lowerCaseSymptoms.includes('high fever') || lowerCaseSymptoms.includes('very hot')) {
+      severityLevel = 'medium';
+      probability = 0.85;
     }
     
     if (lowerCaseSymptoms.includes('cough')) {
@@ -128,6 +180,40 @@ export const analyzeSymptoms = async (symptoms: string): Promise<Diagnosis[]> =>
     }
   }
   
+  // Joint pain conditions
+  if (lowerCaseSymptoms.includes('joint') || lowerCaseSymptoms.includes('knee') || lowerCaseSymptoms.includes('elbow') || lowerCaseSymptoms.includes('ankle')) {
+    if (lowerCaseSymptoms.includes('pain')) {
+      if (lowerCaseSymptoms.includes('swell') || lowerCaseSymptoms.includes('red') || lowerCaseSymptoms.includes('hot')) {
+        results.push({
+          condition: 'Inflammatory Arthritis',
+          probability: 0.68,
+          description: 'Inflammation in the joints causing pain, swelling, and stiffness.',
+          recommendations: [
+            'Anti-inflammatory medications',
+            'Rest affected joints',
+            'Apply ice to reduce swelling',
+            'Consult a rheumatologist'
+          ],
+          severity: 'medium'
+        });
+      } else if (lowerCaseSymptoms.includes('stiff') || lowerCaseSymptoms.includes('morning')) {
+        results.push({
+          condition: 'Osteoarthritis',
+          probability: 0.75,
+          description: 'A degenerative joint disease that occurs when the protective cartilage cushioning the ends of your bones wears down over time.',
+          recommendations: [
+            'Regular exercise to strengthen surrounding muscles',
+            'Weight management to reduce pressure on joints',
+            'Pain relievers and anti-inflammatory drugs',
+            'Physical therapy'
+          ],
+          severity: 'low'
+        });
+      }
+    }
+  }
+  
+  // Gastrointestinal conditions
   if (lowerCaseSymptoms.includes('stomach') || lowerCaseSymptoms.includes('nausea') || lowerCaseSymptoms.includes('vomit')) {
     results.push({
       condition: 'Gastroenteritis',
@@ -156,8 +242,24 @@ export const analyzeSymptoms = async (symptoms: string): Promise<Diagnosis[]> =>
         severity: 'high'
       });
     }
+    
+    if (lowerCaseSymptoms.includes('heartburn') || lowerCaseSymptoms.includes('acid') || lowerCaseSymptoms.includes('reflux')) {
+      results.push({
+        condition: 'Gastroesophageal Reflux Disease (GERD)',
+        probability: 0.70,
+        description: 'A digestive disorder that affects the lower esophageal sphincter, causing stomach acid to flow back into the esophagus.',
+        recommendations: [
+          'Avoid trigger foods (spicy, fatty, citrus)',
+          'Eat smaller meals',
+          'Don\'t lie down right after eating',
+          'Over-the-counter antacids or acid reducers'
+        ],
+        severity: 'low'
+      });
+    }
   }
   
+  // Skin conditions
   if (lowerCaseSymptoms.includes('rash') || lowerCaseSymptoms.includes('skin')) {
     if (lowerCaseSymptoms.includes('itch') || lowerCaseSymptoms.includes('itchy')) {
       results.push({
@@ -172,6 +274,21 @@ export const analyzeSymptoms = async (symptoms: string): Promise<Diagnosis[]> =>
         ],
         severity: 'low'
       });
+      
+      if (lowerCaseSymptoms.includes('scaly') || lowerCaseSymptoms.includes('dry patches')) {
+        results.push({
+          condition: 'Eczema',
+          probability: 0.65,
+          description: 'A condition that makes your skin red and itchy, often appearing in patches of very dry, thickened skin.',
+          recommendations: [
+            'Moisturize frequently',
+            'Topical corticosteroids for flare-ups',
+            'Avoid harsh soaps and hot water',
+            'Identify and avoid triggers'
+          ],
+          severity: 'low'
+        });
+      }
     }
     
     if (lowerCaseSymptoms.includes('red') && lowerCaseSymptoms.includes('spots')) {
@@ -190,9 +307,42 @@ export const analyzeSymptoms = async (symptoms: string): Promise<Diagnosis[]> =>
     }
   }
   
+  // Mental health symptoms
+  if (lowerCaseSymptoms.includes('anxious') || lowerCaseSymptoms.includes('anxiety') || lowerCaseSymptoms.includes('worry') || lowerCaseSymptoms.includes('stress')) {
+    results.push({
+      condition: 'Generalized Anxiety Disorder',
+      probability: 0.60,
+      description: 'Persistent and excessive worry about various things that is difficult to control.',
+      recommendations: [
+        'Practice relaxation techniques',
+        'Consider cognitive behavioral therapy',
+        'Regular exercise',
+        'Speak with a mental health professional'
+      ],
+      severity: 'medium'
+    });
+  }
+  
+  if (lowerCaseSymptoms.includes('sad') || lowerCaseSymptoms.includes('depress') || lowerCaseSymptoms.includes('no interest') || lowerCaseSymptoms.includes('no energy')) {
+    results.push({
+      condition: 'Depression',
+      probability: 0.55,
+      description: 'A mood disorder that causes a persistent feeling of sadness and loss of interest.',
+      recommendations: [
+        'Seek help from a mental health professional',
+        'Regular physical activity',
+        'Maintain social connections',
+        'Establish regular sleep patterns'
+      ],
+      severity: 'medium'
+    });
+  }
+  
   // If no specific matches, return a more nuanced generic response
   if (results.length === 0) {
     const containsMultipleSymptoms = (symptoms.split(' ').length > 5);
+    const symptomWords = ['pain', 'ache', 'discomfort', 'swelling', 'redness', 'fatigue'];
+    const hasCommonSymptoms = symptomWords.some(word => lowerCaseSymptoms.includes(word));
     
     results.push({
       condition: 'Unspecified Condition',
@@ -204,7 +354,7 @@ export const analyzeSymptoms = async (symptoms: string): Promise<Diagnosis[]> =>
         'Stay hydrated and get adequate rest',
         'Consult with a healthcare provider for a comprehensive evaluation'
       ],
-      severity: 'medium'
+      severity: hasCommonSymptoms ? 'medium' : 'low'
     });
   }
   
