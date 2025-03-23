@@ -1,6 +1,7 @@
 
 import { motion } from "framer-motion";
 import TestimonialCard from "./TestimonialCard";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 const testimonials = [
   {
@@ -95,7 +96,7 @@ const TestimonialsSection = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.5 }}
-      className="w-full max-w-6xl px-4 mb-24"
+      className="w-full max-w-6xl px-4 mx-auto mb-24"
     >
       <h2 className="text-3xl font-bold text-center mb-12 health-gradient-text">
         Trusted by thousands worldwide
@@ -104,7 +105,31 @@ const TestimonialsSection = () => {
         See what our users have to say about their experience with Arogya AI
       </p>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Mobile view: Carousel */}
+      <div className="block md:hidden mb-10">
+        <Carousel opts={{ align: "start", loop: true }}>
+          <CarouselContent>
+            {testimonials.map((testimonial, index) => (
+              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                <TestimonialCard
+                  quote={testimonial.quote}
+                  author={testimonial.author}
+                  location={testimonial.location}
+                  rating={testimonial.rating}
+                  initials={testimonial.initials}
+                />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className="flex justify-center mt-4">
+            <CarouselPrevious className="static -translate-y-0 mr-2" />
+            <CarouselNext className="static -translate-y-0" />
+          </div>
+        </Carousel>
+      </div>
+      
+      {/* Desktop view: Grid */}
+      <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {testimonials.map((testimonial, index) => (
           <TestimonialCard
             key={index}
