@@ -1,4 +1,5 @@
 
+import React from "react";
 import { Check, AlertTriangle, AlertCircle, Info } from "lucide-react";
 
 export type SeverityLevel = 'low' | 'medium' | 'high';
