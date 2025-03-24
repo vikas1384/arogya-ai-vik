@@ -1,11 +1,16 @@
-
 import { NavLink } from "react-router-dom";
-import { motion } from "framer-motion";
-import { Stethoscope, UserCircle, BarChart3 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Stethoscope, UserCircle, BarChart3, Moon, Sun } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-const Navbar = () => {
+interface NavbarProps {
+  theme: "light" | "dark";
+  toggleTheme: () => void;
+}
+
+const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
   return (
-    <header className="py-4 px-6 sticky top-0 z-50 backdrop-blur-lg bg-white/70 dark:bg-gray-900/70 border-b border-gray-200 dark:border-gray-800 shadow-sm">
+    <header className="py-4 px-6 sticky top-0 z-50 backdrop-blur-lg bg-white/70 dark:bg-gray-900/70 border-b border-gray-200 dark:border-gray-800 shadow-sm transition-colors duration-300">
       <div className="max-w-6xl mx-auto flex items-center justify-between">
         <NavLink to="/" className="flex items-center gap-3 group">
           <motion.div
@@ -43,6 +48,26 @@ const Navbar = () => {
         </nav>
 
         <div className="flex items-center gap-3">
+          <Button 
+            onClick={toggleTheme} 
+            size="icon" 
+            variant="outline" 
+            className="rounded-full h-10 w-10 backdrop-blur-sm bg-white/70 dark:bg-gray-800/70 shadow-sm hover:shadow-md transition-all duration-300"
+            aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div 
+                key={theme}
+                initial={{ opacity: 0, rotate: -20, scale: 0.8 }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                exit={{ opacity: 0, rotate: 20, scale: 0.8 }}
+                transition={{ duration: 0.3 }}
+              >
+                {theme === 'light' ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+              </motion.div>
+            </AnimatePresence>
+          </Button>
+
           <NavLink 
             to="/profile"
             className={({ isActive }) => 
