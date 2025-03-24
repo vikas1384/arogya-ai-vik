@@ -1,7 +1,7 @@
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Mic, Send, Loader2, Info, Plus } from "lucide-react";
+import { Mic, Send, Loader2, Plus, Sparkles } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { 
   Tooltip,
@@ -23,24 +23,15 @@ interface SymptomInputFormProps {
   isLoading: boolean;
 }
 
-// Common symptom suggestions
-const SYMPTOM_SUGGESTIONS = [
-  "Headache",
-  "Fever",
-  "Cough",
-  "Fatigue",
-  "Shortness of breath",
-  "Nausea",
-  "Dizziness",
-  "Chest pain",
-  "Abdominal pain",
-  "Rash",
-  "Sore throat",
-  "Joint pain",
-  "Muscle aches",
-  "Chills",
-  "Loss of appetite"
-];
+// Common symptom suggestions organized by category
+const SYMPTOM_SUGGESTIONS = {
+  General: ["Fever", "Fatigue", "Chills", "Loss of appetite", "Weight loss", "Night sweats"],
+  Pain: ["Headache", "Chest pain", "Abdominal pain", "Joint pain", "Muscle aches", "Back pain"],
+  Respiratory: ["Cough", "Shortness of breath", "Sore throat", "Runny nose", "Congestion"],
+  Digestive: ["Nausea", "Vomiting", "Diarrhea", "Constipation", "Bloating"],
+  Neurological: ["Dizziness", "Confusion", "Memory loss", "Difficulty speaking", "Numbness"],
+  Skin: ["Rash", "Itching", "Discoloration", "Swelling", "Bruising"]
+};
 
 const SymptomInputForm = ({
   symptoms,
@@ -49,7 +40,37 @@ const SymptomInputForm = ({
   isLoading,
 }: SymptomInputFormProps) => {
   const [isRecording, setIsRecording] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string>("General");
+  const [recordingDuration, setRecordingDuration] = useState(0);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const recordingTimerRef = useRef<NodeJS.Timeout | null>(null);
+  
+  // Effect to handle recording timer
+  useEffect(() => {
+    if (isRecording) {
+      recordingTimerRef.current = setInterval(() => {
+        setRecordingDuration(prev => prev + 1);
+      }, 1000);
+    } else {
+      if (recordingTimerRef.current) {
+        clearInterval(recordingTimerRef.current);
+        setRecordingDuration(0);
+      }
+    }
+    
+    return () => {
+      if (recordingTimerRef.current) {
+        clearInterval(recordingTimerRef.current);
+      }
+    };
+  }, [isRecording]);
+  
+  // Format recording time
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+  };
   
   // Add a symptom suggestion to the current text
   const addSymptomSuggestion = (suggestion: string) => {
@@ -105,6 +126,20 @@ const SymptomInputForm = ({
     recognition.start();
   };
 
+  // Generate a sample symptom description for demonstration
+  const generateSample = () => {
+    const samples = [
+      "I've had a headache for the past 3 days, along with fever and a runny nose. My temperature is around 100°F.",
+      "I'm experiencing sharp abdominal pain on my lower right side since yesterday morning. It gets worse when I move. No vomiting but I feel nauseous.",
+      "I've been coughing for a week with yellow phlegm. I also feel tired all the time and sometimes short of breath.",
+      "I've noticed a red rash on my chest that's slightly itchy. It started 2 days ago and seems to be spreading.",
+      "I've been having trouble sleeping, feeling anxious, and experiencing heart palpitations for the past 10 days. No previous heart issues."
+    ];
+    
+    const randomSample = samples[Math.floor(Math.random() * samples.length)];
+    setSymptoms(randomSample);
+  };
+
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="relative">
@@ -114,7 +149,7 @@ const SymptomInputForm = ({
           value={symptoms}
           onChange={(e) => setSymptoms(e.target.value)}
           rows={5}
-          className="w-full resize-none pr-12"
+          className="w-full resize-none pr-12 focus:ring-2 focus:ring-health-500 transition-all duration-300"
           disabled={isLoading || isRecording}
         />
         
@@ -127,23 +162,39 @@ const SymptomInputForm = ({
                     variant="ghost" 
                     size="icon" 
                     type="button"
-                    className="absolute top-2 right-2 h-8 w-8"
+                    className="absolute top-2 right-2 h-8 w-8 rounded-full hover:bg-health-100 dark:hover:bg-health-900/30"
                     disabled={isLoading || isRecording}
                   >
                     <Plus className="h-4 w-4" />
                   </Button>
                 </PopoverTrigger>
-                <PopoverContent className="w-64 p-2" align="end">
-                  <div className="space-y-2">
-                    <h3 className="font-medium text-sm">Common symptoms</h3>
-                    <div className="flex flex-wrap gap-1">
-                      {SYMPTOM_SUGGESTIONS.map((suggestion) => (
+                <PopoverContent className="w-80 p-3" align="end">
+                  <div className="space-y-3">
+                    <h3 className="font-medium text-sm mb-2">Add symptoms to your description</h3>
+                    
+                    <div className="flex flex-wrap gap-1.5 mb-3">
+                      {Object.keys(SYMPTOM_SUGGESTIONS).map((category) => (
+                        <Button 
+                          key={category}
+                          variant={selectedCategory === category ? "default" : "outline"} 
+                          size="sm"
+                          type="button"
+                          className="text-xs h-7"
+                          onClick={() => setSelectedCategory(category)}
+                        >
+                          {category}
+                        </Button>
+                      ))}
+                    </div>
+                    
+                    <div className="flex flex-wrap gap-1.5 max-h-40 overflow-y-auto p-1">
+                      {SYMPTOM_SUGGESTIONS[selectedCategory as keyof typeof SYMPTOM_SUGGESTIONS].map((suggestion) => (
                         <Button
                           key={suggestion}
                           variant="outline"
                           size="sm"
                           type="button"
-                          className="text-xs h-7"
+                          className="text-xs h-7 bg-white dark:bg-gray-900"
                           onClick={() => addSymptomSuggestion(suggestion)}
                         >
                           {suggestion}
@@ -161,51 +212,74 @@ const SymptomInputForm = ({
         </TooltipProvider>
       </div>
       
-      <div className="flex justify-between items-center">
-        <div className="flex items-center space-x-2">
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <div>
-                  <Button 
-                    type="button" 
-                    variant="outline"
-                    size="icon"
-                    onClick={handleVoiceInput}
-                    disabled={isLoading || isRecording}
-                  >
-                    <Mic className={`h-4 w-4 ${isRecording ? 'text-red-500 animate-pulse' : ''}`} />
-                  </Button>
-                </div>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Describe your symptoms using voice input</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-          
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button variant="ghost" size="sm" className="px-0" type="button">
-                  <Info className="h-4 w-4 mr-1" />
-                  <span className="text-xs text-muted-foreground">Be specific about location, duration and severity</span>
+      <div className="flex flex-wrap items-center gap-3">
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <div>
+                <Button 
+                  type="button" 
+                  variant={isRecording ? "default" : "outline"}
+                  size="sm"
+                  onClick={handleVoiceInput}
+                  disabled={isLoading || isRecording}
+                  className={`flex items-center gap-1.5 ${isRecording ? 'bg-red-500 hover:bg-red-600' : ''}`}
+                >
+                  {isRecording ? (
+                    <>
+                      <div className="voice-wave text-white">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                      <span>{formatTime(recordingDuration)}</span>
+                    </>
+                  ) : (
+                    <>
+                      <Mic className="h-4 w-4" />
+                      <span>Voice</span>
+                    </>
+                  )}
                 </Button>
-              </TooltipTrigger>
-              <TooltipContent className="max-w-80">
-                <p>For better analysis, include:</p>
-                <ul className="list-disc pl-4 text-xs mt-1">
-                  <li>Where you feel symptoms</li>
-                  <li>When they started</li>
-                  <li>How severe they are (mild, moderate, severe)</li>
-                  <li>Any relevant medical history</li>
-                </ul>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        </div>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Describe your symptoms using voice input</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
         
-        <Button type="submit" disabled={isLoading || isRecording || !symptoms.trim()}>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                type="button"
+                className="flex items-center gap-1.5"
+                onClick={generateSample}
+                disabled={isLoading || isRecording}
+              >
+                <Sparkles className="h-3.5 w-3.5" />
+                <span>Sample</span>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Use a sample symptom description</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+        
+        <div className="flex-1"></div>
+        
+        <Button 
+          type="submit" 
+          disabled={isLoading || isRecording || !symptoms.trim()}
+          size="sm"
+          className="bg-health-600 hover:bg-health-700 text-white rounded-full px-6 transition-all duration-300 hover:scale-105"
+        >
           {isLoading ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
