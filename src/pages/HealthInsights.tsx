@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Heart, Activity, TrendingUp, Clock, ThumbsUp, AlertCircle, ArrowRight, ArrowUpRight } from "lucide-react";
@@ -81,6 +80,66 @@ const healthTips = [
     description: "Pay attention to hunger cues and enjoy meals without distractions.",
     imageUrl: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=200&auto=format",
   },
+  {
+    id: 4,
+    title: "योग और प्राणायाम का महत्व",
+    description: "दैनिक योग और प्राणायाम से शारीरिक और मानसिक स्वास्थ्य में सुधार होता है।",
+    imageUrl: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=200&auto=format",
+  },
+  {
+    id: 5,
+    title: "आयुर्वेदिक दिनचर्या",
+    description: "स्वस्थ जीवन के लिए आयुर्वेद के अनुसार दिनचर्या का पालन करें।",
+    imageUrl: "https://images.unsplash.com/photo-1611071536600-66f4f726c3bf?q=80&w=200&auto=format",
+  },
+  {
+    id: 6,
+    title: "Balanced Diet Essentials",
+    description: "Include all six essential nutrients in your diet: proteins, carbohydrates, fats, vitamins, minerals, and water.",
+    imageUrl: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=200&auto=format",
+  },
+  {
+    id: 7,
+    title: "Quality Sleep Matters",
+    description: "Aim for 7-9 hours of quality sleep daily. Maintain a consistent sleep schedule.",
+    imageUrl: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=200&auto=format",
+  },
+  {
+    id: 8,
+    title: "Mental Health Care",
+    description: "Practice meditation, deep breathing, or any mindfulness activity for 10 minutes daily.",
+    imageUrl: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=200&auto=format",
+  },
+  {
+    id: 9,
+    title: "स्वस्थ पाचन के नुस्खे",
+    description: "भोजन के बाद 10-15 मिनट टहलें और पाचन को बेहतर बनाएं।",
+    imageUrl: "https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?q=80&w=200&auto=format",
+  },
+  {
+    id: 10,
+    title: "Stress Management",
+    description: "Identify stress triggers and develop healthy coping mechanisms like exercise or hobbies.",
+    imageUrl: "https://images.unsplash.com/photo-1507413245164-6160d8298b31?q=80&w=200&auto=format",
+  },
+  {
+    id: 11,
+    title: "Immunity Boosting",
+    description: "Include vitamin C-rich foods, exercise regularly, and get adequate sleep to strengthen immunity.",
+    imageUrl: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?q=80&w=200&auto=format",
+  },
+  {
+    id: 12,
+    title: "Heart Health",
+    description: "Maintain healthy cholesterol levels through diet, exercise, and stress management.",
+    imageUrl: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?q=80&w=200&auto=format",
+  },
+  {
+    id: 13,
+    title: "Digital Eye Care",
+    description: "Follow the 20-20-20 rule: Every 20 minutes, look at something 20 feet away for 20 seconds.",
+    imageUrl: "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?q=80&w=200&auto=format",
+  }
 ];
 
 const HealthInsights = () => {

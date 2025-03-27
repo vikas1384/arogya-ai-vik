@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import TestimonialCard from "./TestimonialCard";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
@@ -87,6 +86,20 @@ const testimonials = [
     location: "Nagpur",
     rating: 5,
     initials: "AP"
+  },
+  {
+    quote: "मैं एक योग प्रशिक्षक हूं और आरोग्य AI ने मेरे छात्रों के लिए व्यक्तिगत स्वास्थ्य योजनाएं बनाने में मदद की है। यह एक अद्भुत टूल है!",
+    author: "Yogesh Mishra",
+    location: "Rishikesh",
+    rating: 5,
+    initials: "YM"
+  },
+  {
+    quote: "ಆರೋಗ್ಯ AI ನನ್ನ ಮಧುಮೇಹವನ್ನು ನಿರ್ವಹಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ. ಇದರ ಮೂಲಕ ನನ್ನ ಆರೋಗ್ಯ ಸುಧಾರಿಸಿದೆ.",
+    author: "Ramesh Gowda",
+    location: "Mysuru",
+    rating: 5,
+    initials: "RG"
   }
 ];
 
